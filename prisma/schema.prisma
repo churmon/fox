@@ -66,6 +66,8 @@ model User {
   accounts      Account[]
   sessions      Session[]
   vehicleInspection VehicleInspection[]
+  createdAt     DateTime @default(now())
+  updateAt      DateTime @updatedAt
  
   @@map("users")
 }
@@ -97,6 +99,8 @@ model VehicleInspection {
   userId        String
   user          User @relation(fields: [userId], references: [id], onDelete: Cascade)
   vehicleInspectionImages VehicleInspectionImages[]
+  createdAt     DateTime @default(now())
+  updateAt      DateTime @updatedAt
 }
 
 model VehicleInspectionImages{
@@ -104,6 +108,8 @@ model VehicleInspectionImages{
   url           String?
   vehicleInspectionId String
   vehicleInspection VehicleInspection @relation(fields: [vehicleInspectionId], references: [id], onDelete: Cascade)
+  createdAt     DateTime @default(now())
+  updateAt      DateTime @updatedAt
 }
 
 
