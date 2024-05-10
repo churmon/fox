@@ -9,7 +9,7 @@ export default async function Home() {
       hello world {JSON.stringify(session)} 
       <form action={async()=>{
         "use server";
-        await signOut();
+        await signOut();``
       }}>
         <Button type="submit">Log Out</Button>
       </form>
