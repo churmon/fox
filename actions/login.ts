@@ -3,7 +3,10 @@
 import prisma from "@/lib/prisma";
 import { loginSchema } from "@/lib/validations";
 import { z } from "zod";
-import bcryptjs from "bcryptjs"
+import { getUserByEmail } from "@/data/user";
+import { signIn } from "@/auth";
+import { DEFAULT_LOGIN_REDIRECT } from "@/routes";
+import { AuthError } from "next-auth";
 
 export default async function login(values:z.infer<typeof loginSchema>) {
     const validatedFields = loginSchema.safeParse(values);
@@ -11,27 +14,24 @@ export default async function login(values:z.infer<typeof loginSchema>) {
         return {error:"Invalide Data"}
     }
 
-    const { email, password} = validatedFields.data;
+    const { email, password } = validatedFields.data;
+    console.log(validatedFields.data)
 
     try {
-        const existingUser = await prisma.user.findUnique({
-            where:{email}
-        });
-        if(!existingUser){
-            return {error:"Wrong Credentials"};
-
-        }
-        // if(existingUser){
-
-        // }
-        const passwordCheck = existingUser.password?.toString() === password;
-
-        if(!passwordCheck){
-            return {error:"Wrong Credentials"};
-        }
-        return {success:"User created successfully!"}
+        
+        await signIn("credentials",{email,password, redirectTo:DEFAULT_LOGIN_REDIRECT})
     } catch (error) {
-        return {error:"Internal Error"};
+        if(error instanceof AuthError){
+            switch(error.type){
+                case "CredentialsSignin":
+                    return {error: "Invalid credentials!"}
+                default:
+                    return {error:"Something went wrong!"}
+            }
+        }
+
+        throw error;
     }
+
   
 }

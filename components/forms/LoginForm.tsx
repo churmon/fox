@@ -30,20 +30,13 @@ export default function LoginForm() {
  
   // 2. Define a submit handler.
   async function onSubmit(values: z.infer<typeof loginSchema>) {
-    // Do something with the form values.
-    // ✅ This will be type-safe and validated.
     setLoading(true);
-    const res = await login(values);
-    if(res.error){
-        setLoading(false);
-        toast.error(res.error);
-        return;
-    }
-    if(res.success){
-        setLoading(false);
-        toast.success(res.success);
-        navigate.push('/');
-    }
+    
+    login(values).then((data)=>{
+      // toast.success(data.);
+      setLoading(false);
+      toast.error(data?.error);
+    })
 
   }
 
