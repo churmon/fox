@@ -1,5 +1,6 @@
 "use server"
 
+import { auth } from "@/auth";
 import prisma from "@/lib/prisma";
 import { loginSchema, vehicleInspectionSchema } from "@/lib/validations";
 import { z } from "zod";
@@ -9,7 +10,9 @@ export default async function vehicleInspection(values:z.infer<typeof vehicleIns
     if(!validatedFields.success){
         return {error:"Invalide Data"}
     }
-    const userId="clvy6zrle0000yf0bwftoxf1j";
+    // const userId="clvy6zrle0000yf0bwftoxf1j";
+    const session = await auth();
+    const userId = session?.user.id!;
     try {
 
         await prisma.vehicleInspection.create({

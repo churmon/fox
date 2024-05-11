@@ -63,6 +63,7 @@ model User {
   image         String?
   role          userRole @default(driver)
   access        Boolean  @default(false) 
+  block         Boolean  @default(false)
   accounts      Account[]
   sessions      Session[]
   vehicleInspection VehicleInspection[]
