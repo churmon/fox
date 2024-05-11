@@ -70,11 +70,11 @@ export default function VehicleInspectionForm() {
         toast.error(res.error);
         return;
     }
-    // if(res.success){
-    //     setLoading(false);
-    //     toast.success(res.success);
-    //     navigate.push('/login');
-    // }
+    if(res.success){
+        setLoading(false);
+        toast.success(res.success);
+        navigate.push('/');
+    }
 
   }
 
