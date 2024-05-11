@@ -1,14 +1,16 @@
 import { auth, signOut } from "@/auth";
 import { Button } from "@/components/ui/button";
+import { getUserById } from "@/data/user";
 import Link from "next/link";
 
 export default async function Home() {
   const session = await auth();
-  const user = session?.user.id;
+  const id = session?.user.id;
+  const current = await getUserById(id);
   console.log({session});
   return (
     <main>
-      hello world {JSON.stringify(session)} 
+      <div>{current?.name} {current?.surname}</div>
       <form action={async()=>{
         "use server";
         await signOut();``
