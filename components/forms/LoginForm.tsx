@@ -12,6 +12,7 @@ import BeatLoader from "react-spinners/BeatLoader";
 import { useState } from "react"
 import { useRouter } from "next/navigation"
 import { loginSchema } from "@/lib/validations"
+import Link from "next/link"
 
 
 
@@ -41,6 +42,7 @@ export default function LoginForm() {
   }
 
   return (
+    <>
     <Form {...form}>
       <form onSubmit={form.handleSubmit(onSubmit)} className="space-y-8">
         
@@ -73,5 +75,13 @@ export default function LoginForm() {
         <Button type="submit">{loading ? <BeatLoader size={15} color="#ffffff" /> :'Submit'} </Button>
       </form>
     </Form>
+    <Link href="/register">
+        <Button variant="default">register</Button>
+    </Link>
+    <Link href="/">
+        <Button variant="default">Home</Button>
+    </Link>
+    </>
+    
   )
 }

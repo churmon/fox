@@ -16,6 +16,7 @@ import { Checkbox } from "../ui/checkbox"
 import FileUploader from "../FileUploader"
 import { uploadImages } from "@/lib/upload"
 import vehicleInspection from "@/actions/vehicleInspection"
+import Link from "next/link"
 
 
 
@@ -78,6 +79,7 @@ export default function VehicleInspectionForm() {
   }
 
   return (
+    <>
     <Form {...form}>
       <form onSubmit={form.handleSubmit(onSubmit)} className="space-y-8">
         <FormField
@@ -495,6 +497,11 @@ export default function VehicleInspectionForm() {
         <Button type="submit">{loading ? <BeatLoader size={15} color="#ffffff" /> :'Submit'} </Button>
       </form>
     </Form>
+    <Link href="/">
+        <Button variant="default">Home</Button>
+    </Link>
+    </>
+    
   )
 }
 

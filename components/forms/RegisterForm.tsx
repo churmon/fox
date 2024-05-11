@@ -12,6 +12,7 @@ import { toast } from "react-toastify"
 import BeatLoader from "react-spinners/BeatLoader";
 import { useState } from "react"
 import { useRouter } from "next/navigation"
+import Link from "next/link"
 
 
 
@@ -51,6 +52,7 @@ export default function RegisterForm() {
   }
 
   return (
+    <>
     <Form {...form}>
       <form onSubmit={form.handleSubmit(onSubmit)} className="space-y-8">
         <FormField
@@ -121,5 +123,13 @@ export default function RegisterForm() {
         <Button type="submit">{loading ? <BeatLoader size={15} color="#ffffff" /> :'Submit'} </Button>
       </form>
     </Form>
+    <Link href="/login">
+        <Button variant="default">login</Button>
+    </Link>
+    <Link href="/">
+        <Button variant="default">Home</Button>
+    </Link>
+    </>
+    
   )
 }

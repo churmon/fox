@@ -4,6 +4,7 @@ import { DEFAULT_LOGIN_REDIRECT, apiAuthPrefix, authRoutes, publicRoutes } from 
 export const { auth } = NextAuth(authConfig)
  
 export default auth((req) => {
+  // const role = req.auth?.user
   // req.auth
   const { nextUrl } = req;
   const isLoggedIn = !!req.auth;
