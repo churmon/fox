@@ -55,7 +55,7 @@ export default function RegisterForm() {
       <div className="flex justify-center items-center h-full">
         <div>
           <Form {...form}>
-            <form onSubmit={form.handleSubmit(onSubmit)} className="space-y-2 md:space-y-8 w-[350px] lg:w-[512px]">
+            <form onSubmit={form.handleSubmit(onSubmit)} className="space-y-2 md:space-y-8 w-[300px] sm:w-[350px] lg:w-[450px] ">
               <FormField
                 control={form.control}
                 name="name"
