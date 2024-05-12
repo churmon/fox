@@ -42,9 +42,10 @@ export default function LoginForm() {
   }
 
   return (
-    <>
+    <div className="flex justify-center items-center h-full">
+      <div>
     <Form {...form}>
-      <form onSubmit={form.handleSubmit(onSubmit)} className="space-y-8">
+      <form onSubmit={form.handleSubmit(onSubmit)} className="space-y-8 w-[300px] sm:w-[350px] lg:w-[450px]" >
         
         <FormField
           control={form.control}
@@ -72,16 +73,15 @@ export default function LoginForm() {
             </FormItem>
           )}
         />
-        <Button type="submit">{loading ? <BeatLoader size={15} color="#ffffff" /> :'Submit'} </Button>
+        <Button type="submit" className="w-full">{loading ? <BeatLoader size={15} color="#ffffff" /> :'Submit'} </Button>
       </form>
     </Form>
-    <Link href="/register">
-        <Button variant="default">register</Button>
-    </Link>
-    <Link href="/">
-        <Button variant="default">Home</Button>
-    </Link>
-    </>
+    <div className="flex justify-end">
+            Do not have an account?
+          <Link href="/register" className="pl-2 font-bold">register</Link>
+          </div>
+    </div>
+    </div>
     
   )
 }
