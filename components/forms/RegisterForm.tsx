@@ -52,9 +52,9 @@ export default function RegisterForm() {
   }
 
   return (
-    <>
+    <div className="h-screen mt-3 max-w-lg mx-auto items-center">
     <Form {...form}>
-      <form onSubmit={form.handleSubmit(onSubmit)} className="space-y-8">
+      <form onSubmit={form.handleSubmit(onSubmit)} className="flex flex-col space-y-2 md:space-y-8">
         <FormField
           control={form.control}
           name="name"
@@ -62,7 +62,7 @@ export default function RegisterForm() {
             <FormItem>
               <FormLabel>Name</FormLabel>
               <FormControl>
-                <Input placeholder="shadcn" {...field} />
+                <Input placeholder="Enter your Name" {...field} />
               </FormControl>
               <FormMessage />
             </FormItem>
@@ -75,7 +75,7 @@ export default function RegisterForm() {
             <FormItem>
               <FormLabel>Surname</FormLabel>
               <FormControl>
-                <Input placeholder="shadcn" {...field} />
+                <Input placeholder="Enter your Surname" {...field} />
               </FormControl>
               <FormMessage />
             </FormItem>
@@ -88,7 +88,7 @@ export default function RegisterForm() {
             <FormItem>
               <FormLabel>Email</FormLabel>
               <FormControl>
-                <Input type="email" placeholder="shadcn" {...field} />
+                <Input type="email" placeholder="Enter your Email" {...field} />
               </FormControl>
               <FormMessage />
             </FormItem>
@@ -101,7 +101,7 @@ export default function RegisterForm() {
             <FormItem>
               <FormLabel>Password</FormLabel>
               <FormControl>
-                <Input type="password" placeholder="shadcn" {...field} />
+                <Input type="password" placeholder="Enter your Password" {...field} />
               </FormControl>
               <FormMessage />
             </FormItem>
@@ -114,7 +114,7 @@ export default function RegisterForm() {
             <FormItem>
               <FormLabel>Confirm Password</FormLabel>
               <FormControl>
-                <Input type="password" placeholder="shadcn" {...field} />
+                <Input type="password" placeholder="Enter your Confirm Password" {...field} />
               </FormControl>
               <FormMessage />
             </FormItem>
@@ -123,13 +123,11 @@ export default function RegisterForm() {
         <Button type="submit">{loading ? <BeatLoader size={15} color="#ffffff" /> :'Submit'} </Button>
       </form>
     </Form>
-    <Link href="/login">
-        <Button variant="default">login</Button>
-    </Link>
-    <Link href="/">
-        <Button variant="default">Home</Button>
-    </Link>
-    </>
+    <div className="flex justify-end">
+      Already have an account?
+    <Link href="/login" className="pl-2 font-bold">login</Link>
+    </div>
+    </div>
     
   )
 }
