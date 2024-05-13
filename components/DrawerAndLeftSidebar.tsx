@@ -31,8 +31,8 @@ const LeftSidebar = () => {
     const userId = 'tyhgjtyghjg';
 
   return (
-    <section className=' ticky left-0 top-0 flex h-screen flex-col justify-between overflow-auto  pb-5 pt-18 max-md:hidden'>
-      <div className='flex w-full flex-1 flex-col gap-3 px-6'>
+    <section className=' ticky left-0 top-0 flex h-screen flex-col justify-between overflow-auto  pb-5 pt-18'>
+      <div className='flex w-full flex-1 flex-col gap-3 px-1'>
         {sidebarLinks.map((link:any) => {
           const isActive =
             (pathname.includes(link.route) && link.route.length > 1) ||
@@ -53,7 +53,7 @@ const LeftSidebar = () => {
                 height={24}
               />
 
-              <p className='text-light-1 max-lg:hidden'>{link.label}</p>
+              <p className='text-light-1 '>{link.label}</p>
             </Link>
           );
         })}
@@ -65,7 +65,7 @@ const LeftSidebar = () => {
             >
               <FcInspection size={24} />
 
-              <p className='text-light-1 max-lg:hidden'>Inspection</p>
+              <p className='text-light-1 '>Inspection</p>
             </Link>
       </div>
 
@@ -79,7 +79,7 @@ const LeftSidebar = () => {
                 height={24}
               />
 
-              <p className='text-light-2 max-lg:hidden'>Logout</p>
+              <p className='text-light-2 '>Logout</p>
             </div>
           </div>
       </div>

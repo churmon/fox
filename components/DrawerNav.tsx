@@ -26,13 +26,13 @@ export function DrawerNav() {
         <Button variant="outline"><IoMdMenu size={26} /></Button>
       </DrawerTrigger>
       <DrawerPortal>
-        <DrawerOverlay className="fixed inset-0 bg-black/40" />
-        <DrawerContent className="bg-white flex flex-col rounded-t-[10px] h-full w-[400px] mt-24 fixed bottom-0 right-0 overflow-y-auto">
-          <div className="p-4 bg-white flex-1 h-full">
-            <div className="max-w-[150px] lg:max-w-md mx-auto">
+        <DrawerContent className="w-[250px] md:max-w-sm">
+          <div className="w-full">
+            <div className="">
             <LeftSidebar />
             </div>
           </div>
+          
         </DrawerContent>
       </DrawerPortal>
     </Drawer>
