@@ -29,7 +29,7 @@ export function DrawerNav() {
         <DrawerOverlay className="fixed inset-0 bg-black/40" />
         <DrawerContent className="bg-white flex flex-col rounded-t-[10px] h-full w-[400px] mt-24 fixed bottom-0 right-0">
           <div className="p-4 bg-white flex-1 h-full">
-            <div className="max-w-md mx-auto">
+            <div className="max-w-sm lg:max-w-md mx-auto">
             <LeftSidebar />
             </div>
           </div>
