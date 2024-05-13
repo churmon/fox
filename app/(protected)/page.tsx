@@ -1,6 +1,7 @@
 import { auth, signOut } from "@/auth";
 import { Button } from "@/components/ui/button";
 import { getUserById } from "@/data/user";
+import { FiLogOut } from "react-icons/fi";
 import Link from "next/link";
 
 export default async function Home() {
@@ -15,7 +16,7 @@ export default async function Home() {
         "use server";
         await signOut();``
       }} className={`${session?.user ? "":'hidden'}`}>
-        <Button type="submit">Log Out</Button>
+        <Button type="submit"><FiLogOut size={26} />Log Out</Button>
       </form>
       <Link  href="/login" className={`${session?.user ? "hidden":'bg-gray-500 p-2'}`}>
         Log In
