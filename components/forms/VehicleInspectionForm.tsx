@@ -81,7 +81,7 @@ export default function VehicleInspectionForm() {
   return (
     <>
     <Form {...form}>
-      <form onSubmit={form.handleSubmit(onSubmit)} className="space-y-8">
+      <form onSubmit={form.handleSubmit(onSubmit)} className="space-y-5 mx-4 mb-5">
         <FormField
           control={form.control}
           name="driverName"
@@ -136,6 +136,7 @@ export default function VehicleInspectionForm() {
         />
         <Input type="file" onChange={(e:any)=> setFile(e.target.files)}  multiple/>
         <div className="flex gap-2 flex-wrap">
+      <div className="grid grid-cols-2 gap-2">
        <FormField
           control={form.control}
           name="fireExt"
@@ -479,6 +480,7 @@ export default function VehicleInspectionForm() {
           )}
         />
         </div>
+        </div>
         {/* <FormField
           control={form.control}
           name="vehicleInspectionImages"
@@ -494,12 +496,11 @@ export default function VehicleInspectionForm() {
             </FormItem>
           )}
         /> */}
-        <Button type="submit">{loading ? <BeatLoader size={15} color="#ffffff" /> :'Submit'} </Button>
+        {/* <div className="bg-red-300"> */}
+        <Button type="submit" className="w-full mx-auto">{loading ? <BeatLoader size={15} color="#ffffff" /> :'Submit'} </Button>
+        {/* </div> */}
       </form>
     </Form>
-    <Link href="/">
-        <Button variant="default">Home</Button>
-    </Link>
     </>
     
   )
