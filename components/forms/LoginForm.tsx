@@ -33,11 +33,22 @@ export default function LoginForm() {
   async function onSubmit(values: z.infer<typeof loginSchema>) {
     setLoading(true);
     
-    login(values).then((data)=>{
-      // toast.success(data.);
+    // login(values).then((data)=>{
+    //   // toast.success(data.);
+    //   setLoading(false);
+    //   toast.error(data?.error);
+    // })
+
+    const res = await login(values);
+    if(res?.error){
       setLoading(false);
-      toast.error(data?.error);
-    })
+      toast.error(res?.error);
+    }
+    if(res?.data){
+      setLoading(false);
+      toast.success("login successfully");
+      navigate.push('/')
+    }
 
   }
 

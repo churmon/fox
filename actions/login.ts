@@ -19,17 +19,22 @@ export default async function login(values:z.infer<typeof loginSchema>) {
 
     try {
         
-        await signIn("credentials",{email,password, redirectTo:DEFAULT_LOGIN_REDIRECT})
+        // await signIn("credentials",{email,password, redirectTo:DEFAULT_LOGIN_REDIRECT})
+
+        const data = await signIn("credentials",{email,password, redirectTo:DEFAULT_LOGIN_REDIRECT})
+        return {data}
     } catch (error) {
         if(error instanceof AuthError){
             switch(error.type){
                 case "CredentialsSignin":
                     return {error: "Invalid credentials!"}
+                case "AccessDenied":
+                    return {error: "You do not have Access Yet"}
                 default:
                     return {error:"Something went wrong!"}
             }
         }
-
+        console.log(error)
         throw error;
     }
 
