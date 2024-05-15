@@ -14,7 +14,7 @@ export default async function Home() {
       <div>{current?.name} {current?.surname}</div>
       <form action={async()=>{
         "use server";
-        await signOut();``
+        await signOut();
       }} className={`${session?.user ? "":'hidden'}`}>
         <Button type="submit"><FiLogOut size={26} />Log Out</Button>
       </form>
