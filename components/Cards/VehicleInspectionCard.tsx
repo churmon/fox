@@ -27,7 +27,7 @@ export default function VehicleInspectionCard() {
                             <p className="text-lg font-semibold text-gray-900 -mt-1 mr-20">Brad Adams</p>
                             <div className="text-sm text-gray-700">22h ago</div>
                         </div>
-                    <p className="text-gray-700">12 SEP 2012. </p>
+                    <p className="text-gray-700">13 SEP 2012. </p>
                 </div>
         </div>
 

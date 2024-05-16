@@ -6,8 +6,9 @@ import Link from "next/link";
 import { MdOutlineCreate } from "react-icons/md";
 
 export default async function page() {
-  const data = await getVehiclesInspection();
-  console.log(data[0].vehicleInspectionImages);
+  // const data = await getVehiclesInspection();
+  // console.log(data[0].vehicleInspectionImages);
+  
   return (
     <div className="relation h-full w-full">
 
