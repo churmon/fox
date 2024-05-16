@@ -65,15 +65,15 @@ export default function VehicleInspectionForm() {
     // ✅ This will be type-safe and validated.
     // setLoading(true);
     const res = await vehicleInspection(values,vehicleInspectionImages);
-    if(res.error){
-        setLoading(false);
-        toast.error(res.error);
-        return;
-    }
+    
     if(res){
         setLoading(false);
         toast.success("Post Created");
         navigate.push('/');
+    }else{
+      setLoading(false);
+      toast.error(res?.error);
+      return;
     }
 
   }
