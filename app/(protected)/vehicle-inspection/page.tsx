@@ -7,17 +7,17 @@ import { MdOutlineCreate } from "react-icons/md";
 
 export default async function page() {
   const data = await getVehiclesInspection();
-  if(data.length === 0){ 
-    return(
-    <div className="bg-red-500">No data yet</div>
-  )
+  // if(data.length === 0){ 
+  //   return(
+  //   <div className="bg-red-500">No data yet</div>
+  // )
   
-  };
+  // };
   console.log(data);
 
   return (
     <div className="relation h-full w-full">
-        {data.map((item:any) => <VehicleInspectionCard key={item.id} info = {item} />
+        {data.length === 0 ? <div>No data yet</div> : data.map((item:any) => <VehicleInspectionCard key={item.id} info = {item} />
       )}
         {/* <VehicleInspectionCard />
         <VehicleInspectionCard />
