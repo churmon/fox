@@ -57,10 +57,10 @@ export default function VehicleInspectionForm() {
  
   // 2. Define a submit handler.
   async function onSubmit(values: z.infer<typeof vehicleInspectionSchema>) {
-    console.log(values,file);
+    // console.log(values,file);
 
     const vehicleInspectionImages = await uploadImages(file);
-    console.log(vehicleInspectionImages);
+    // console.log(vehicleInspectionImages);
     // Do something with the form values.
     // ✅ This will be type-safe and validated.
     // setLoading(true);
@@ -70,9 +70,9 @@ export default function VehicleInspectionForm() {
         toast.error(res.error);
         return;
     }
-    if(res.success){
+    if(res){
         setLoading(false);
-        toast.success(res.success);
+        toast.success("Post Created");
         navigate.push('/');
     }
 

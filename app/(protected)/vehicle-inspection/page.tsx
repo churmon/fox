@@ -7,7 +7,12 @@ import { MdOutlineCreate } from "react-icons/md";
 
 export default async function page() {
   const data = await getVehiclesInspection();
-  if(!data) return [];
+  if(data.length === 0){ 
+    return(
+    <div className="bg-red-500">No data yet</div>
+  )
+  
+  };
   console.log(data);
 
   return (

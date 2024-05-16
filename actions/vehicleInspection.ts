@@ -15,9 +15,12 @@ export default async function vehicleInspection(values:z.infer<typeof vehicleIns
     try {
 
         const session = await auth();
-        const userId = session?.user.id!;
+        const userId = session?.user.id;
+        if(!userId){
+            return {error:"You must be Authenthicated"};
+        }
 
-        await prisma.vehicleInspection.create({
+        const result = await prisma.vehicleInspection.create({
             data:{
                ...validatedFields.data,
                userId,
@@ -30,7 +33,7 @@ export default async function vehicleInspection(values:z.infer<typeof vehicleIns
             }
         });
         
-        return {success:"Posted successfully!"}
+        return result
     } catch (error) {
         console.log(error)
         return {error:"Internal Error"};
