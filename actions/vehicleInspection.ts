@@ -55,7 +55,7 @@ export async function getVehiclesInspection(){
         return res;
         
     } catch (error) {
-        return {error:"Failed to"}
+        return [{error:"Failed to"}]
     }
 
     

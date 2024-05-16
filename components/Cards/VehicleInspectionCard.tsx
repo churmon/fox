@@ -9,13 +9,16 @@ import {
   CarouselNext,
   CarouselPrevious,
 } from "@/components/ui/carousel"
+import { VehicleInspection } from '@prisma/client'
+import Image from "next/image"
 
 
 
-export default function VehicleInspectionCard() {
+export default function VehicleInspectionCard({info}:{info:any}) {
+  
   return (
 
-    <div className="flex flex-col bg-white shadow-lg rounded-lg mx-4 md:mx-auto max-w-md md:max-w-2xl mt-5">
+    <div className="flex flex-col bg-white shadow-lg rounded-lg mx-4 md:mx-auto max-w-md md:max-w-2xl mt-5 overflow-y-auto">
         <div className="flex items-start px-4 py-2">
             {/* <img className="w-12 h-12 rounded-full object-cover mr-4 shadow" src="/images/IMG_($#*.webp" alt="avatar" /> */}
                 <Avatar>
@@ -33,17 +36,22 @@ export default function VehicleInspectionCard() {
 
          <Carousel className="w-full max-w-[300px] mx-auto">
                 <CarouselContent>
-                    {Array.from({ length: 5 }).map((_, index) => (
-                    <CarouselItem key={index}>
+                    {info.vehicleInspectionImages && info.vehicleInspectionImages.map((url:any, index:any) => {
+                        console.log(url);
+                        if(!url)return;
+                        return (
+                            <CarouselItem key={index}>
                         <div className="p-1">
-                        <Card>
-                            <CardContent className="flex aspect-square items-center justify-center p-6">
-                            <span className="text-4xl font-semibold">{index + 1}</span>
+                        <Card className='w-full h-full relative'>
+                            <CardContent className="flex aspect-square items-center justify-center p-6 w-full h-full relative">
+                            <Image src={url.url} alt="image" fill className=" object-cover object-center" />
+                            {/* <span className="text-4xl font-semibold">{index + 1}</span> */}
                             </CardContent>
                         </Card>
                         </div>
                     </CarouselItem>
-                    ))}
+                        )
+                    })}
                 </CarouselContent>
             <CarouselPrevious />
             <CarouselNext />

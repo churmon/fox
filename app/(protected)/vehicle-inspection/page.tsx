@@ -6,17 +6,19 @@ import Link from "next/link";
 import { MdOutlineCreate } from "react-icons/md";
 
 export default async function page() {
-  // const data = await getVehiclesInspection();
-  // console.log(data[0].vehicleInspectionImages);
-  
+  const data = await getVehiclesInspection();
+  if(!data) return [];
+  console.log(data);
+
   return (
     <div className="relation h-full w-full">
-
+        {data.map((item:any) => <VehicleInspectionCard key={item.id} info = {item} />
+      )}
+        {/* <VehicleInspectionCard />
         <VehicleInspectionCard />
         <VehicleInspectionCard />
         <VehicleInspectionCard />
-        <VehicleInspectionCard />
-        <VehicleInspectionCard />
+        <VehicleInspectionCard /> */}
         <Link href="/vehicle-inspection/create" className="fixed z-20 bottom-10 right-5">
           <VehicleInspectButton />
         </Link>
