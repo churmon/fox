@@ -66,11 +66,7 @@ export default function VehicleInspectionForm() {
     // setLoading(true);
     const res = await vehicleInspection(values,vehicleInspectionImages);
     
-    if(res.success){
-        setLoading(false);
-        toast.success(res.success);
-        navigate.push('/');
-    }else{
+    if(res.error)
       setLoading(false);
       toast.error(res.error);
       return;

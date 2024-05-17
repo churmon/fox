@@ -35,36 +35,16 @@ export default async function vehicleInspection(values:z.infer<typeof vehicleIns
             }
         });
         
-        return {success:"Post Added Successfully"}
+        // return {success:"Post Added Successfully"}
     } catch (error) {
         console.log(error)
         return {error:"Internal Error"};
 
     }
 
-    revalidatePath('/vehicle-inspection');
+    revalidatePath('/(protected)/vehicle-inspection');
     redirect('/vehicle-inspection');
   
 }
 
-export async function getVehiclesInspection(){
 
-    try {
-
-        const res = await prisma.vehicleInspection.findMany({
-            orderBy:{
-                createdAt:"desc"
-            },
-            include:{
-                vehicleInspectionImages:true
-            }
-
-        })
-        return res;
-        
-    } catch (error) {
-        return [{error:"Failed to"}]
-    }
-
-    
-}
