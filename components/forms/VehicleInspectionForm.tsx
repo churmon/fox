@@ -71,7 +71,7 @@ export default function VehicleInspectionForm() {
       toast.error(res.error);
       return;
     }
-
+  }
   
 
   return (
