@@ -3,6 +3,8 @@
 import { auth } from "@/auth";
 import prisma from "@/lib/prisma";
 import { loginSchema, vehicleInspectionSchema } from "@/lib/validations";
+import {revalidatePath} from "next/cache";
+import {redirect} from "next/navigation";
 import { z } from "zod";
 
 export default async function vehicleInspection(values:z.infer<typeof vehicleInspectionSchema>, images:string[]) {
@@ -39,6 +41,9 @@ export default async function vehicleInspection(values:z.infer<typeof vehicleIns
         return {error:"Internal Error"};
 
     }
+
+    revalidatePath('/vehicle-inspection');
+    redirect('/vehicle-inspection');
   
 }
 
