@@ -1,7 +1,7 @@
-import { getVehiclesInspection } from "@/actions/vehicleInspection";
 import VehicleInspectionCard from "@/components/Cards/VehicleInspectionCard";
 import VehicleInspectButton from "@/components/VehicleInspectButton";
 import VehicleInspectionForm from "@/components/forms/VehicleInspectionForm";
+import { getVehiclesInspection } from "@/data/vehicle";
 import Link from "next/link";
 import { MdOutlineCreate } from "react-icons/md";
 
