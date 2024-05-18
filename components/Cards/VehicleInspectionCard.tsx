@@ -40,13 +40,13 @@ export default async function VehicleInspectionCard({vehicleInspect,currentUser}
                 <AvatarImage src="https://github.com/shadcn.png" alt="@shadcn" className='h-14 w-14' />
                 <AvatarFallback>CN</AvatarFallback>
                 </Avatar>
-                <div className="">
+                <div className="w-full">
                         <div className="flex items-center w-full justify-between">
                             <p className="text-lg font-semibold text-gray-900 -mt-1 ml-1">
                                 {currentUser.name}</p>
                             <div className="text-sm text-gray-700">{formatTimeAgo(vehicleInspect.createdAt)}</div>
                         </div>
-                    <p className="text-gray-700 text-sm">{convertTimeToFormat(vehicleInspect.createdAt)}</p>
+                    <p className="text-gray-700 font-bold text-sm">{convertTimeToFormat(vehicleInspect.createdAt)}</p>
                 </div>
         </div>
 
