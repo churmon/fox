@@ -21,7 +21,7 @@ export default async function Home() {
       <Link  href="/login" className={`${session?.user ? "hidden":'bg-gray-500 p-2'}`}>
         Log In
         </Link>
-        {/* <Link href="/vehicle-inspection" className={`${session?.user ? "bg-gray-500 p-2":'hidden'}`}>
+        {/* <Link href="/vehicle-inspection" className={`${session?.user ? " bg-gray-500 p-2":'hidden'}`}>
         vehicle-inspection
     </Link> */}
     </main>
