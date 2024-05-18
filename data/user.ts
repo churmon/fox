@@ -1,6 +1,8 @@
 
 // import { auth } from "@/auth";
+import { auth } from "@/auth";
 import prisma from "@/lib/prisma"
+import { redirect } from "next/navigation";
 
 export async function getUserByEmail(email:string) {
     const user = await prisma.user.findUnique({
@@ -18,12 +20,6 @@ export async function getUserById(id:string | null | undefined) {
   return user;
 }
 
-// export async function getCurrentUser() {
-//   const session = await auth();
-//   const id = session?.user.id!;
-//   const user = await prisma.user.findUnique({
-//       where:{id}
-//   })
-// return user;
-// }
+
+
 

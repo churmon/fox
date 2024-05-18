@@ -1,23 +1,33 @@
 import prisma from "@/lib/prisma";
 
-export async function getVehiclesInspection(){
+export async function getVehiclesInspection()
+{
+    const res = await prisma.vehicleInspection.findMany({
+        orderBy:{
+            createdAt:"desc"
+        },
+        include:{
+            vehicleInspectionImages:true
+        }
 
-    try {
+    })
+    return res;
 
-        const res = await prisma.vehicleInspection.findMany({
-            orderBy:{
-                createdAt:"desc"
-            },
-            include:{
-                vehicleInspectionImages:true
-            }
+    // try {
 
-        })
-        return res;
-        
-    } catch (error) {
-        return [{error:"Failed to"}]
-    }
+    //     const res = await prisma.vehicleInspection.findMany({
+    //         orderBy:{
+    //             createdAt:"desc"
+    //         },
+    //         include:{
+    //             vehicleInspectionImages:true
+    //         }
+
+    //     })
+    //     return res;
+    // } catch (error) {
+    //     return;
+    // }
 
     
 }
