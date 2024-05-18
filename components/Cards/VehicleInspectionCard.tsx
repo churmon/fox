@@ -44,9 +44,9 @@ export default async function VehicleInspectionCard({vehicleInspect,currentUser}
                         <div className="flex items-center w-full justify-between">
                             <p className="text-lg font-semibold text-gray-900 -mt-1 ml-1">
                                 {currentUser.name}</p>
-                            <div className="text-sm text-gray-700">{formatTimeAgo(vehicleInspect.createdAt)}</div>
+                            <div className="text-sm text-gray-900">{formatTimeAgo(vehicleInspect.createdAt)}</div>
                         </div>
-                    <p className="text-gray-700 font-bold text-sm">{convertTimeToFormat(vehicleInspect.createdAt)}</p>
+                    <p className="text-gray-900 font-semibold text-sm">{convertTimeToFormat(vehicleInspect.createdAt)}</p>
                 </div>
         </div>
 
