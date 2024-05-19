@@ -50,7 +50,7 @@ export default async function VehicleInspectionCard({vehicleInspect,currentUser}
                 </div>
         </div>
 
-         <Carousel className="w-full max-w-[300px] md:max-w-full md:max-h-[400px] mx-auto">
+         <Carousel className="w-full h-full max-w-[300px] md:max-w-[600px] md:max-h-[600px] mx-auto">
                 <CarouselContent>
                     {vehicleInspect.vehicleInspectionImages && vehicleInspect.vehicleInspectionImages.map((url:any, index:any) => {
                         console.log(url);
@@ -75,10 +75,49 @@ export default async function VehicleInspectionCard({vehicleInspect,currentUser}
          </Carousel> 
 
          
-         <div className="flex items-start px-4 py-2">
-            <p className=" text-gray-700 text-sm">
-                Lorem ipsum, dolor sit amet conse. Saepe optio minus rem dolor sit amet!
-            </p>
+         <div className="flex flex-col px-4 py-2">
+            <div className='flex space-x-5'>
+                    <div>Driver: <span className='font-bold'> {vehicleInspect.driverName} {vehicleInspect.driverSurname}</span> </div>
+                    <div className=''>Reg No: <span className='font-bold'>{vehicleInspect.regNo}</span></div>
+            </div>
+            <div className='flex flex-wrap space-x-3'>
+                <div className=''>Fire Extinguish: <span className='font-bold'>{vehicleInspect.fireExt ? 'Yes' : 'No'}</span>
+                </div>
+                <div className=''>Jack: <span className='font-bold'>{vehicleInspect.jack ? 'Yes' : 'No'}</span>
+                </div>
+                <div className=''>Wheel Brace: <span className='font-bold'>{vehicleInspect.wheelBrace ? 'Yes' : 'No'}</span>
+                </div>
+                <div className=''>Triangle: <span className='font-bold'>{vehicleInspect.triangle ? 'Yes' : 'No'}</span>
+                </div>
+                <div className=''>First Aid: <span className='font-bold'>{vehicleInspect.firstAid ? 'Yes' : 'No'}</span>
+                </div>
+                <div className=''>Spare Wheel: <span className='font-bold'>{vehicleInspect.spareWheel ? 'Yes' : 'No'}</span>
+                </div>
+                <div className=''>Heads Lights: <span className='font-bold'>{vehicleInspect.headLights ? 'Working' : 'Not Working'}</span>
+                </div>
+                <div className=''>Indicator L: <span className='font-bold'>{vehicleInspect.indicatorL ? 'Working' : 'Not Working'}</span>
+                </div>
+                <div className=''>Indicator R: <span className='font-bold'>{vehicleInspect.indicatorR ? 'Working' : 'Not Working'}</span>
+                </div>
+                <div className=''>Brake Light L: <span className='font-bold'>{vehicleInspect.brakeLightL ? 'Working' : 'Not Working'}</span>
+                </div>
+                <div className=''>Brake Light R: <span className='font-bold'>{vehicleInspect.brakeLightR ? 'Working' : 'Not Working'}</span>
+                </div>
+                <div className=''>Hooter: <span className='font-bold'>{vehicleInspect.hooter ? 'Working' : 'Not Working'}</span>
+                </div>
+                <div className=''>Door Locks: <span className='font-bold'>{vehicleInspect.doorLock ? 'Working' : 'Not Working'}</span>
+                </div>
+                <div className=''>Two Way Radio: <span className='font-bold'>{vehicleInspect.wayRadio ? 'Working' : 'Not Working'}</span>
+                </div>
+                <div className=''>Water: <span className='font-bold'>{vehicleInspect.water ? 'Yes' : 'No'}</span>
+                </div>
+                <div className=''>Oil: <span className='font-bold'>{vehicleInspect.oil ? 'Yes' : 'No'}</span>
+                </div>
+                <div className=''>Brake Fluid: <span className='font-bold'>{vehicleInspect.brakeFluid ? 'Yes' : 'No'}</span>
+                </div>
+                <div className=''>Power Steering Oil: <span className='font-bold'>{vehicleInspect.steeringOil ? 'Yes' : 'No'}</span>
+                </div>
+            </div>
          </div>
          
          
