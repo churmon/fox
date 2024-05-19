@@ -51,20 +51,20 @@ export default async function VehicleInspectionCard({vehicleInspect,currentUser}
         </div>
 
          <Carousel className="w-full max-w-[300px] md:max-w-full md:max-h-[400px] mx-auto">
-                <CarouselContent className="w-full h-full">
+                <CarouselContent>
                     {vehicleInspect.vehicleInspectionImages && vehicleInspect.vehicleInspectionImages.map((url:any, index:any) => {
                         console.log(url);
                         if(!url)return;
                         return (
-                            <CarouselItem key={index} className="w-full h-full">
-                        <div className="p-1 w-full h-[400px]">
-                        <Image src={url.url} alt="image" fill className="w-full h-full overflow-hidden object-contain" />
-                        {/* <Card className='w-full h-full relative'>
+                            <CarouselItem key={index}>
+                        <div className="p-1">
+                        {/* <Image src={url.url} alt="image" fill className="w-full h-full overflow-hidden object-cover object-center" /> */}
+                        <Card className='w-full h-full relative'>
                             <CardContent className="flex aspect-square items-center justify-center p-6 w-full h-full relative">
-                            <Image src={url.url} alt="image" fill className="w-full h-full overflow-hidden object-fill" /> */}
+                            <Image src={url.url} alt="image" fill className="w-full h-full overflow-hidden object-cover" />
                             {/* <span className="text-4xl font-semibold">{index + 1}</span> */}
-                            {/* </CardContent>
-                        </Card> */}
+                            </CardContent>
+                        </Card>
                         </div>
                     </CarouselItem>
                         )
