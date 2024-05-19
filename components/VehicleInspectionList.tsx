@@ -18,7 +18,7 @@ const session = await auth();
   if(!currentUser)return;
   return (
     <>
-      {data.map((vehicleInspect)=><VehicleInspectionCard vehicleInspect={vehicleInspect} currentUser={currentUser} />)}
+      {data.map((vehicleInspect)=><VehicleInspectionCard vehicleInspect={vehicleInspect} currentUser={currentUser} key={vehicleInspect.id} />)}
     </>
   )
 }

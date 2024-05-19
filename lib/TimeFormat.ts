@@ -18,20 +18,28 @@ export function convertTimeToFormat(utcDate: Date): string {
 
 
 export function formatTimeAgo(databaseTime: Date): string {
-    const currentTime = new Date();
-    const timeDifference = currentTime.getTime() - databaseTime.getTime();
+    const seconds = Math.floor((new Date().getTime() - databaseTime.getTime()) / 1000);
+    const minutes = Math.floor(seconds / 60);
+    const hours = Math.floor(minutes / 60);
+    const days = Math.floor(hours / 24);
+    const weeks = Math.floor(days / 7); // Calculate weeks
+    const months = Math.floor(days / 30);
+    const years = Math.floor(days / 365);
 
-    // Convert milliseconds to seconds
-    const secondsAgo = Math.floor(timeDifference / 1000);
-
-    if (secondsAgo < 60) {
-        return `${secondsAgo}s ago`;
-    } else if (secondsAgo < 3600) {
-        const minutesAgo = Math.floor(secondsAgo / 60);
-        return `${minutesAgo}m ago`;
+    if (seconds < 60) {
+        return 'just now';
+    } else if (minutes < 60) {
+        return `${minutes} minutes ago`;
+    } else if (hours < 24) {
+        return `${hours} hours ago`;
+    } else if (days < 7) {
+        return `${days} days ago`;
+    } else if (weeks < 4) {
+        return `${weeks} weeks ago`;
+    } else if (months < 12) {
+        return `${months} months ago`;
     } else {
-        const hoursAgo = Math.floor(secondsAgo / 3600);
-        return `${hoursAgo}h ago`;
+        return `${years} years ago`;
     }
 }
 
