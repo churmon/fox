@@ -76,7 +76,7 @@ export default async function VehicleInspectionCard({vehicleInspect,currentUser}
 
          
          <div className="flex flex-col px-4 py-2">
-            <div className='flex flex-col md:flex-row space-x-5'>
+            <div className='flex flex-col md:flex-row md:space-x-5'>
                     <div>Driver: <span className='font-bold'> {vehicleInspect.driverName} {vehicleInspect.driverSurname}</span> </div>
                     <div className=''>Reg No: <span className='font-bold'>{vehicleInspect.regNo}</span></div>
             </div>
