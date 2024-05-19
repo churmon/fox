@@ -2,6 +2,7 @@ import { auth } from "@/auth";
 import { getUserById } from "@/data/user";
 import { Prisma } from "@prisma/client";
 import VehicleInspectionCard from "./Cards/VehicleInspectionCard";
+import Link from "next/link";
 
 type VehicleInspectionCardProps={
     data: Prisma.VehicleInspectionGetPayload<{
@@ -13,12 +14,14 @@ type VehicleInspectionCardProps={
 
 
 export default async function VehicleInspectionList({data}:VehicleInspectionCardProps) {
-const session = await auth();
-  const currentUser = await getUserById(session?.user.id);
-  if(!currentUser)return;
+// const session = await auth();
+  // const currentUser = await getUserById(session?.user.id);
+  // const currentUser = await getUserById(data.userId);
+  //   if(!currentUser)return;
+
   return (
     <>
-      {data.map((vehicleInspect)=><VehicleInspectionCard vehicleInspect={vehicleInspect} currentUser={currentUser} key={vehicleInspect.id} />)}
+      {data.map((vehicleInspect)=><Link href={`/vehicle-inspection/${vehicleInspect.id}`} key={vehicleInspect.id}><VehicleInspectionCard vehicleInspect={vehicleInspect}  /></Link>)}
     </>
   )
 }
