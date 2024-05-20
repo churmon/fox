@@ -26,12 +26,18 @@ import {
 import { IoMdMenu } from "react-icons/io";
 import LeftSidebar from "./DrawerAndLeftSidebar";
 import { useState } from "react";
+import logout from "@/actions/logout";
 
 
 export function DrawerNav() {
 
   const router = useRouter();
   const pathname = usePathname();
+
+  const handleLogout= async ()=>{
+    await logout();
+    router.push("/login");
+  }
 
  
 
@@ -80,7 +86,7 @@ export function DrawerNav() {
           </DrawerFooter>
       </Link>
 
-      <Link href="#">
+      <div onClick={handleLogout}>
         <DrawerFooter>
             <DrawerClose className={`relative flex justify-start gap-4 rounded-lg p-4`}>
             <Image
@@ -93,7 +99,7 @@ export function DrawerNav() {
               <p className='text-light-2 '>Logout</p>
               </DrawerClose>
           </DrawerFooter>
-      </Link>
+      </div>
 
       
         {/* {sidebarLinks.map((link:any) => {
