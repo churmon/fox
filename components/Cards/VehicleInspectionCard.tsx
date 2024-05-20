@@ -28,9 +28,6 @@ export default async function VehicleInspectionCard({vehicleInspect}:VehicleInsp
 
     const currentUser = await getUserById(vehicleInspect.userId);
     if(!currentUser)return;
-
-    // const user = await getCurrentUser();
-    // if(!user) return;
   
   return (
 
