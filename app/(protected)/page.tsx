@@ -12,12 +12,7 @@ export default async function Home() {
   return (
     <main>
       <div>{current?.name} {current?.surname}</div>
-      <form action={async()=>{
-        "use server";
-        await signOut();
-      }} className={`${session?.user ? "":'hidden'}`}>
-        <Button type="submit"><FiLogOut size={26} />Log Out</Button>
-      </form>
+      
       <Link  href="/login" className={`${session?.user ? "hidden":'bg-gray-500 p-2'}`}>
         Log In
         </Link>

@@ -10,14 +10,15 @@ import { MdCarRepair } from "react-icons/md";
 
 import { sidebarLinks, sidebarLinksIcon } from "@/constants";
 import logout from "@/actions/logout";
+import Lougout from "./Lougout";
 
 const LeftSidebar = () => {
   const router = useRouter();
   const pathname = usePathname();
-  const handleLogout= async ()=>{
-    await logout();
-    router.push("/login");
-  }
+  // const handleLogout= ()=>{
+  //   // await logout();
+  //   router.push("/logout");
+  // }
 
   const sidebarLinksIcon = [
     {
@@ -75,7 +76,7 @@ const LeftSidebar = () => {
       </div>
 
       <div className='mt-10 px-6'>
-          <div onClick={handleLogout}>
+          {/* <div onClick={handleLogout}>
             <div className='flex cursor-pointer gap-4 p-4'>
               <Image
                 src='/assets/logout.svg'
@@ -86,7 +87,8 @@ const LeftSidebar = () => {
 
               <p className='text-light-2 '>Logout</p>
             </div>
-          </div>
+          </div> */}
+          <Lougout />
       </div>
     </section>
   );
