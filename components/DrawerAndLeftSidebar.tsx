@@ -15,10 +15,10 @@ import Lougout from "./Lougout";
 const LeftSidebar = () => {
   const router = useRouter();
   const pathname = usePathname();
-  // const handleLogout= ()=>{
-  //   // await logout();
-  //   router.push("/logout");
-  // }
+  const handleLogout= ()=>{
+    // await logout();
+    router.push("/logout");
+  }
 
   const sidebarLinksIcon = [
     {
@@ -76,7 +76,7 @@ const LeftSidebar = () => {
       </div>
 
       <div className='mt-10 px-6'>
-          {/* <div onClick={handleLogout}>
+          <div onClick={handleLogout}>
             <div className='flex cursor-pointer gap-4 p-4'>
               <Image
                 src='/assets/logout.svg'
@@ -87,8 +87,8 @@ const LeftSidebar = () => {
 
               <p className='text-light-2 '>Logout</p>
             </div>
-          </div> */}
-          <Lougout />
+          </div>
+          {/* <Lougout /> */}
       </div>
     </section>
   );
