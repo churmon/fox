@@ -1,10 +1,12 @@
-import React from 'react'
+'use client'
 import { Avatar, AvatarFallback, AvatarImage } from '../ui/avatar';
 import { formatTimeAgo, convertTimeToFormat } from '@/lib/TimeFormat';
 import { Card, CardContent } from '../ui/card';
 import { Carousel, CarouselContent, CarouselItem, CarouselPrevious, CarouselNext } from '../ui/carousel';
 import { Prisma, User } from '@prisma/client';
 import Image from 'next/image';
+import { Button } from '../ui/button';
+import { useRouter } from 'next/navigation';
 
 type VehicleInspectionCardByIdProps={
     vehicleInspect:Prisma.VehicleInspectionGetPayload<{
@@ -16,6 +18,8 @@ type VehicleInspectionCardByIdProps={
 };
 
 export default function VehicleInspectionCardById({vehicleInspect, currentUser}:VehicleInspectionCardByIdProps) {
+    const router = useRouter();
+
   return (
     <div className="flex flex-col bg-white shadow-lg rounded-lg mx-4 md:mx-5 max-w-md md:max-w-full mt-5 overflow-y-auto">
         <div className="flex items-start px-4 py-2">
@@ -102,6 +106,8 @@ export default function VehicleInspectionCardById({vehicleInspect, currentUser}:
                 <div className=''>Power Steering Oil: <span className='font-bold'>{vehicleInspect.steeringOil ? 'Yes' : 'No'}</span>
                 </div>
             </div>
+            <div>{vehicleInspect.comment}</div>
+            <Button onClick={()=>router.back()}>Back</Button>
          </div>
          
          
