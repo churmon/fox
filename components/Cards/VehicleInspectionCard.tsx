@@ -1,6 +1,6 @@
-import React from 'react'
+'use client'
 import { Avatar, AvatarFallback, AvatarImage } from '../ui/avatar'
-
+import TimeAgo from 'react-timeago';
 import { Card, CardContent } from "@/components/ui/card"
 import {
   Carousel,
@@ -11,8 +11,8 @@ import {
 } from "@/components/ui/carousel"
 import { Prisma, User, VehicleInspection } from '@prisma/client'
 import Image from "next/image"
-import { convertTimeToFormat, formatTimeAgo } from '@/lib/TimeFormat'
 import { getUserById } from '@/data/user'
+import { convertTimeToFormat } from '@/lib/TimeFormat';
 
 type VehicleInspectionCardProps = {
     vehicleInspect : Prisma.VehicleInspectionGetPayload<{
@@ -20,14 +20,14 @@ type VehicleInspectionCardProps = {
             vehicleInspectionImages:true
         },
     }>;
+    currentUser: User;
 }
 
 
+export default function VehicleInspectionCard({vehicleInspect,currentUser}:VehicleInspectionCardProps) {
+    
+    
 
-export default async function VehicleInspectionCard({vehicleInspect}:VehicleInspectionCardProps) {
-
-    const currentUser = await getUserById(vehicleInspect.userId);
-    if(!currentUser)return;
   
   return (
 
@@ -42,7 +42,7 @@ export default async function VehicleInspectionCard({vehicleInspect}:VehicleInsp
                         <div className="flex items-center w-full justify-between">
                             <p className="text-lg font-semibold text-gray-900 -mt-1 ml-1">
                                 {currentUser.name}</p>
-                            <div className="text-sm text-gray-900">{formatTimeAgo(vehicleInspect.createdAt)}</div>
+                            <div className="text-sm text-gray-900"><TimeAgo date={vehicleInspect.createdAt} /></div>
                         </div>
                     <p className="text-gray-900 font-semibold text-sm">{convertTimeToFormat(vehicleInspect.createdAt)}</p>
                 </div>

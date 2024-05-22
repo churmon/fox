@@ -43,8 +43,19 @@ export function formatTimeAgo(databaseTime: Date): string {
     }
 }
 
+
+
 // Example usage:
 // const databaseTime = '2024-05-12T11:00:00Z'; // Replace with your actual database time
 // const userTimeZone = 'Africa/Johannesburg'; // Replace with your desired time zone
 // const formattedTime = convertTimeToFormat(databaseTime);
 // console.log(formattedTime); // Output: "May 12, 2024, 1:00 PM"
+
+export function formatTime(date: Date): string {
+    const hours = date.getHours();
+    const minutes = date.getMinutes();
+    const amOrPm = hours >= 12 ? 'pm' : 'am';
+    const formattedHours = (hours % 12) || 12; // Convert to 12-hour format
+
+    return `${formattedHours}:${minutes.toString().padStart(2, '0')} ${amOrPm}`;
+}

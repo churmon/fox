@@ -21,7 +21,10 @@ export default async function VehicleInspectionList({data}:VehicleInspectionCard
 
   return (
     <>
-      {data.map((vehicleInspect)=><Link href={`/vehicle-inspection/${vehicleInspect.id}`} key={vehicleInspect.id}><VehicleInspectionCard vehicleInspect={vehicleInspect}  /></Link>)}
+      {data.map(async (vehicleInspect)=>{
+        const currentUser = await getUserById(vehicleInspect.userId);
+        if(!currentUser)return;
+    return <Link href={`/vehicle-inspection/${vehicleInspect.id}`} key={vehicleInspect.id}><VehicleInspectionCard vehicleInspect={vehicleInspect} currentUser={currentUser}  /></Link>})}
     </>
   )
 }

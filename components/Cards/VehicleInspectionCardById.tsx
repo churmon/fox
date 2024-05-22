@@ -1,6 +1,6 @@
 'use client'
 import { Avatar, AvatarFallback, AvatarImage } from '../ui/avatar';
-import { formatTimeAgo, convertTimeToFormat } from '@/lib/TimeFormat';
+import {convertTimeToFormat, formatTime } from '@/lib/TimeFormat';
 import { Card, CardContent } from '../ui/card';
 import { Carousel, CarouselContent, CarouselItem, CarouselPrevious, CarouselNext } from '../ui/carousel';
 import { Prisma, User } from '@prisma/client';
@@ -32,7 +32,7 @@ export default function VehicleInspectionCardById({vehicleInspect, currentUser}:
                         <div className="flex items-center w-full justify-between">
                             <p className="text-lg font-semibold text-gray-900 -mt-1 ml-1">
                                 {currentUser.name}</p>
-                            <div className="text-sm text-gray-900">{formatTimeAgo(vehicleInspect.createdAt)}</div>
+                            <div className="text-sm text-gray-900">{formatTime(vehicleInspect.createdAt)}</div>
                         </div>
                     <p className="text-gray-900 font-semibold text-sm">{convertTimeToFormat(vehicleInspect.createdAt)}</p>
                 </div>
