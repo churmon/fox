@@ -12,7 +12,6 @@ export default async function vehicleInspection(values:z.infer<typeof vehicleIns
     if(!validatedFields.success){
         return {error:"Invalide Data"}
     }
-    // const userId="clvy6zrle0000yf0bwftoxf1j";
     
     try {
 
@@ -35,7 +34,6 @@ export default async function vehicleInspection(values:z.infer<typeof vehicleIns
             }
         });
         
-        // return {success:"Post Added Successfully"}
     } catch (error) {
         console.log(error)
         return {error:"Internal Error"};
