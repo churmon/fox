@@ -10,7 +10,7 @@ export default async function page() {
   return (
     <div className="relation h-full w-full">
       {data?.length === 0 ?"No data":<VehicleInspectionList  data={data} />}
-        <Link href="/vehicle-inspection/create" className="fixed z-20 bottom-10 right-5">
+        <Link href="/vehicle-inspection/create" className="fixed z-20 bottom-10 right-5 bg-green-500 p-3 rounded-full">
           <VehicleInspectButton />
         </Link>
         

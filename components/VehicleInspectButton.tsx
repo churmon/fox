@@ -4,7 +4,7 @@ import { MdOutlineCreate } from 'react-icons/md'
 export default function VehicleInspectButton() {
   return (
     <div>
-        <MdOutlineCreate size={44} className="" />
+        <MdOutlineCreate size={44} className="text-white" />
     </div>
   )
 }
