@@ -1,20 +1,9 @@
 'use client'
 import {
-    Cloud,
-    CreditCard,
-    Github,
-    Keyboard,
-    LifeBuoy,
-    LogOut,
-    Mail,
-    MessageSquare,
-    Plus,
-    PlusCircle,
-    Settings,
-    User,
-    UserPlus,
     Users,
   } from "lucide-react"
+  import { BsTrash3 } from "react-icons/bs";
+  import { MdOutlineEdit } from "react-icons/md";
   
   import { Button } from "@/components/ui/button"
   import {
@@ -33,28 +22,44 @@ import {
   } from "@/components/ui/dropdown-menu"
   
 import { BsThreeDotsVertical } from "react-icons/bs";
-  export function DotsDialog() {
+import { tracingChannel } from "diagnostics_channel";
+import { toast } from "react-toastify";
+import deleteVehicleInspect from "@/actions/deleteVehicleInspect";
+  export function DotsDialog({id}:{id:string}) {
 
-    const handleDialog = (e:any)=>{
-        e.preventDefault();
-        console.log('hello world');
+    const handleDelete = async ()=> {
+      try {
+        const res = await deleteVehicleInspect(id);
+        if(res?.error){
+          toast.error(res?.error);
+          return;
+        }
+        toast.success('Deleted Successfully');
+      } catch (error) {
+        toast.error('Something went wrong');
+      }
+        
     };
 
     return (
       <DropdownMenu>
         <DropdownMenuTrigger asChild>
         
-        <Button variant="ghost"><BsThreeDotsVertical size={18} onClick={handleDialog} /></Button>
+        <Button variant="ghost"><BsThreeDotsVertical size={18} /></Button>
         </DropdownMenuTrigger>
         <DropdownMenuContent className="w-56">
           <DropdownMenuGroup>
             <DropdownMenuItem>
-              <Users className="mr-2 h-4 w-4" />
-              <span>Team</span>
+              <div className="flex">
+              <MdOutlineEdit className="mr-2 h-4 w-4" />
+              <span>Edit</span>
+              </div>
             </DropdownMenuItem>
             <DropdownMenuItem>
-              <Users className="mr-2 h-4 w-4" />
-              <span>Team</span>
+              <div onClick={handleDelete} className="flex cursor-pointer">
+              <BsTrash3 className="mr-2 h-4 w-4" />
+              <span>Delete</span>
+              </div>
             </DropdownMenuItem>
           </DropdownMenuGroup>
         </DropdownMenuContent>

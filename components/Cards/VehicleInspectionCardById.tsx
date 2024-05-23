@@ -7,6 +7,9 @@ import { Prisma, User } from '@prisma/client';
 import Image from 'next/image';
 import { Button } from '../ui/button';
 import { useRouter } from 'next/navigation';
+import deleteVehicleInspect from '@/actions/deleteVehicleInspect';
+import { toast } from 'react-toastify';
+import { DotsDialog } from '../DotsDialog';
 
 type VehicleInspectionCardByIdProps={
     vehicleInspect:Prisma.VehicleInspectionGetPayload<{
@@ -19,6 +22,15 @@ type VehicleInspectionCardByIdProps={
 
 export default function VehicleInspectionCardById({vehicleInspect, currentUser}:VehicleInspectionCardByIdProps) {
     const router = useRouter();
+    // const handleDelete = async ()=> {
+    //           try {
+    //             await deleteVehicleInspect(vehicleInspect.id);
+    //             toast.success('Deleted Successfully');
+    //           } catch (error) {
+    //             toast.error('Something went wrong');
+    //           }
+                
+    //         };
 
   return (
     <div className="flex flex-col bg-white shadow-lg rounded-lg mx-4 md:mx-5 max-w-md md:max-w-full mt-5 overflow-y-auto">
@@ -32,7 +44,8 @@ export default function VehicleInspectionCardById({vehicleInspect, currentUser}:
                         <div className="flex items-center w-full justify-between">
                             <p className="text-lg font-semibold text-gray-900 -mt-1 ml-1">
                                 {currentUser.name}</p>
-                            <div className="text-sm text-gray-900">{formatTime(vehicleInspect.createdAt)}</div>
+                            <div className="flex items-center gap-1 text-sm text-gray-900">{formatTime(vehicleInspect.createdAt)}<DotsDialog id={vehicleInspect.id} /></div>
+                            {/* <div className="flex items-center gap-1 text-sm text-gray-900">{formatTime(vehicleInspect.createdAt)}<Button onClick={handleDelete}>Delete</Button></div> */}
                         </div>
                     <p className="text-gray-900 font-semibold text-sm">{convertTimeToFormat(vehicleInspect.createdAt)}</p>
                 </div>

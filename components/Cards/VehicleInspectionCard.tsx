@@ -43,8 +43,8 @@ export default function VehicleInspectionCard({vehicleInspect,currentUser}:Vehic
                         <div className="flex items-center w-full justify-between">
                             <p className="text-lg font-semibold text-gray-900 -mt-1 ml-1">
                                 {currentUser.name}</p>
-                            <div className="flex items-center gap-1 text-sm text-gray-900"><TimeAgo date={vehicleInspect.createdAt} /> <DotsDialog /> </div>
-                        </div>
+                            <div className=" text-sm text-gray-900"><TimeAgo date={vehicleInspect.createdAt} /> </div>
+                            </div>
                     <p className="text-gray-900 font-semibold text-sm">{convertTimeToFormat(vehicleInspect.createdAt)}</p>
                 </div>
         </div>
