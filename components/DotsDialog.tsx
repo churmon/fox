@@ -25,10 +25,12 @@ import { BsThreeDotsVertical } from "react-icons/bs";
 import { tracingChannel } from "diagnostics_channel";
 import { toast } from "react-toastify";
 import deleteVehicleInspect from "@/actions/deleteVehicleInspect";
+import { DeleteImages } from "@/lib/Delete";
   export function DotsDialog({id}:{id:string}) {
 
     const handleDelete = async ()=> {
       try {
+        await DeleteImages(id);
         const res = await deleteVehicleInspect(id);
         if(res?.error){
           toast.error(res?.error);
@@ -56,7 +58,7 @@ import deleteVehicleInspect from "@/actions/deleteVehicleInspect";
               </div>
             </DropdownMenuItem>
             <DropdownMenuItem>
-              <div onClick={handleDelete} className="flex cursor-pointer">
+              <div onClick={handleDelete} className="flex items-center font-bold cursor-pointer p-2">
               <BsTrash3 className="mr-2 h-4 w-4" />
               <span>Delete</span>
               </div>

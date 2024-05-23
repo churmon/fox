@@ -107,7 +107,7 @@ model VehicleInspection {
 model VehicleInspectionImages{
   id            String    @id @default(cuid())
   url           String?
-  vehicleInspectionId String
+  vehicleInspectionId String 
   vehicleInspection VehicleInspection @relation(fields: [vehicleInspectionId], references: [id], onDelete: Cascade)
   createdAt     DateTime @default(now())
   updateAt      DateTime @updatedAt
