@@ -26,11 +26,23 @@ import { tracingChannel } from "diagnostics_channel";
 import { toast } from "react-toastify";
 import deleteVehicleInspect from "@/actions/deleteVehicleInspect";
 import { DeleteImages } from "@/lib/Delete";
-  export function DotsDialog({id}:{id:string}) {
+import { VehicleInspectionImages } from "@prisma/client";
 
-    const handleDelete = async ()=> {
+
+type DotsDialogProps ={
+  id:string;
+  images:VehicleInspectionImages[]
+}
+
+  export function DotsDialog({id,images}:DotsDialogProps) {
+
+    const handleDelete = async () => {
       try {
-        await DeleteImages(id);
+        const resl = await DeleteImages(images);
+        if(resl?.error){
+          toast.error(resl?.error);
+          return;
+        }
         const res = await deleteVehicleInspect(id);
         if(res?.error){
           toast.error(res?.error);

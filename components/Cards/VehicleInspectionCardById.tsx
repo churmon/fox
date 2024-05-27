@@ -44,7 +44,7 @@ export default function VehicleInspectionCardById({vehicleInspect, currentUser}:
                         <div className="flex items-center w-full justify-between">
                             <p className="text-lg font-semibold text-gray-900 -mt-1 ml-1">
                                 {currentUser.name}</p>
-                            <div className="flex items-center gap-1 text-sm text-gray-900">{formatTime(vehicleInspect.createdAt)}<DotsDialog id={vehicleInspect.id} /></div>
+                            <div className="flex items-center gap-1 text-sm text-gray-900">{formatTime(vehicleInspect.createdAt)}<DotsDialog id={vehicleInspect.id} images={vehicleInspect.vehicleInspectionImages} /></div>
                             {/* <div className="flex items-center gap-1 text-sm text-gray-900">{formatTime(vehicleInspect.createdAt)}<Button onClick={handleDelete}>Delete</Button></div> */}
                         </div>
                     <p className="text-gray-900 font-semibold text-sm">{convertTimeToFormat(vehicleInspect.createdAt)}</p>
@@ -54,7 +54,7 @@ export default function VehicleInspectionCardById({vehicleInspect, currentUser}:
          <Carousel className="w-full h-full max-w-[300px] md:max-w-[600px] md:max-h-[600px] mx-auto">
                 <CarouselContent>
                     {vehicleInspect.vehicleInspectionImages && vehicleInspect.vehicleInspectionImages.map((url:any, index:any) => {
-                        console.log(url);
+                        // console.log(url);
                         if(!url)return;
                         return (
                             <CarouselItem key={index}>

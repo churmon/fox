@@ -52,7 +52,7 @@ export default function VehicleInspectionCard({vehicleInspect,currentUser}:Vehic
          <Carousel className="w-full h-full max-w-[300px] md:max-w-[600px] md:max-h-[600px] mx-auto">
                 <CarouselContent>
                     {vehicleInspect.vehicleInspectionImages && vehicleInspect.vehicleInspectionImages.map((url:any, index:any) => {
-                        console.log(url);
+                        // console.log(url);
                         if(!url)return;
                         return (
                             <CarouselItem key={index}>

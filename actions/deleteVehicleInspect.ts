@@ -38,3 +38,21 @@ revalidatePath('/(protected)/vehicle-inspection');
 redirect('/vehicle-inspection');
 
 }
+
+export async function getVehicleInspectionImages(id:string){
+    try {
+        if(!id) return;
+        const res = await prisma.vehicleInspection.findUnique({
+            where:{
+                id
+            },
+            include:{
+                vehicleInspectionImages: true,
+            }
+        });
+        return res?.vehicleInspectionImages;
+        
+    } catch (error:any) {
+        console.log(error.message);
+    }
+}

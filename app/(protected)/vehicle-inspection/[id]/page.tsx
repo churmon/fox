@@ -9,8 +9,10 @@ type paramsProp = {
 }
 export default async function page({params}:paramsProp) {
     const {id} = params;
+
     const data = await getVehiclesInspectionById(id);
     if(!data) return;
+    // console.log(data.vehicleInspectionImages[0].url);
     const user = await getUserById(data.userId);
     if(!user)return;
 
