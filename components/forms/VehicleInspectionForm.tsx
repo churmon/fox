@@ -14,7 +14,7 @@ import { useState } from "react"
 import { useRouter } from "next/navigation"
 import { Checkbox } from "../ui/checkbox"
 import FileUploader from "../FileUploader"
-import { uploadImages } from "@/lib/upload"
+import { uploadImages, uploadImagesFirebase } from "@/lib/upload"
 import vehicleInspection from "@/actions/vehicleInspection"
 import Link from "next/link"
 
@@ -59,7 +59,9 @@ export default function VehicleInspectionForm() {
   async function onSubmit(values: z.infer<typeof vehicleInspectionSchema>) {
     // console.log(values,file);
     setLoading(true);
-    const vehicleInspectionImages = await uploadImages(file);
+    // const vehicleInspectionImages = await uploadImages(file);
+    const vehicleInspectionImages = await uploadImagesFirebase(file,"VehicleInspectionImages");
+    // uploadImagesFirebase
     // console.log(vehicleInspectionImages);
     // Do something with the form values.
     // ✅ This will be type-safe and validated.
