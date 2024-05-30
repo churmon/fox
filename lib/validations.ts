@@ -28,6 +28,22 @@ export const registerSchema = z.object({
 
   })
 
+  export const StoreSchema = z.object({
+    mechanic: z.string().min(3, {
+      message: "Mechanic Name must be at least 3 characters.",
+    }).regex(new RegExp("^[a-zA-Z0-9]+$"),"No special character!" ),
+
+    productName: z.string().min(3, {
+      message: "Product Name must be at least 3 characters.",
+    }).regex(new RegExp("^[a-zA-Z0-9]+$"),"No special character!" ),
+
+    comment: z.string().optional(),
+    regNo: z.string().optional(),
+
+  })
+
+
+
   export const vehicleInspectionSchema = z.object({
     driverName: z.string().min(3, {
       message: "Driver name must be at least 3 characters.",

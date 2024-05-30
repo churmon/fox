@@ -67,6 +67,7 @@ model User {
   accounts      Account[]
   sessions      Session[]
   vehicleInspection VehicleInspection[]
+  store         Store[]
   createdAt     DateTime @default(now())
   updateAt      DateTime @updatedAt
  
@@ -111,6 +112,27 @@ model VehicleInspectionImages{
   vehicleInspection VehicleInspection @relation(fields: [vehicleInspectionId], references: [id], onDelete: Cascade)
   createdAt     DateTime @default(now())
   updateAt      DateTime @updatedAt
+}
+
+model Store {
+  id            String    @id @default(cuid())
+  productName   String?
+  regNo         String?
+  mechanic      String?
+  comment       String?
+  userId        String
+  user          User @relation(fields: [userId], references: [id], onDelete: Cascade)
+  images        StoreImage[]
+  createdAt     DateTime @default(now())
+  updateAt      DateTime @updatedAt
+  
+}
+
+model StoreImage{
+  id            String    @id @default(cuid())
+  url           String?
+  storeId       String
+  store         Store @relation(fields: [storeId], references: [id],onDelete: Cascade)
 }
 
 

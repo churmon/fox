@@ -6,6 +6,7 @@ import { usePathname, useRouter } from "next/navigation";
 import { FcInspection } from "react-icons/fc";
 import { CiUser } from "react-icons/ci";
 import { MdCarRepair } from "react-icons/md";
+import { TbBuildingStore } from "react-icons/tb";
 
 
 import { sidebarLinks, sidebarLinksIcon } from "@/constants";
@@ -73,6 +74,15 @@ export function DrawerNav() {
             <DrawerClose className={`relative flex justify-start gap-4 rounded-lg p-4 ${pathname==="/vehicle-inspection"? "bg-blue-500 " : ""}`}>
               <FcInspection size={24} />
               <p className='text-light-1 '>Inspection</p>
+              </DrawerClose>
+          </DrawerFooter>
+      </Link>
+
+      <Link href="/store">
+        <DrawerFooter>
+            <DrawerClose className={`relative flex justify-start gap-4 rounded-lg p-4 ${pathname==="/store"? "bg-blue-500 " : ""}`}>
+              <TbBuildingStore size={24} />
+              <p className='text-light-1 '>Store Room</p>
               </DrawerClose>
           </DrawerFooter>
       </Link>
